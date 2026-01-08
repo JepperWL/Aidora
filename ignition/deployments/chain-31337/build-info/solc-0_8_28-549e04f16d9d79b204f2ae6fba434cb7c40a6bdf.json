@@ -1,0 +1,39 @@
+{
+  "_format": "hh3-sol-build-info-1",
+  "id": "solc-0_8_28-549e04f16d9d79b204f2ae6fba434cb7c40a6bdf",
+  "solcVersion": "0.8.28",
+  "solcLongVersion": "0.8.28+commit.7893614a",
+  "userSourceNameMap": {
+    "contracts/TokenSale.sol": "project/contracts/TokenSale.sol"
+  },
+  "input": {
+    "language": "Solidity",
+    "settings": {
+      "evmVersion": "cancun",
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "outputSelection": {
+        "*": {
+          "": [
+            "ast"
+          ],
+          "*": [
+            "abi",
+            "evm.bytecode",
+            "evm.deployedBytecode",
+            "evm.methodIdentifiers",
+            "metadata"
+          ]
+        }
+      },
+      "remappings": []
+    },
+    "sources": {
+      "project/contracts/TokenSale.sol": {
+        "content": "//SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.26;\r\n\r\ninterface IERC20 {\r\n    function transfer(address to, uint256 amount) external returns (bool);\r\n    function decimals() external view returns (uint8);\r\n    function balanceOf(address owner) external view returns (uint256);\r\n}\r\n\r\ncontract TokenSale {\r\n    uint256 public tokenPriceInWei = 1 ether;\r\n    IERC20 public token;\r\n\r\n    constructor(address _token) {\r\n        token = IERC20(_token);\r\n    }\r\n\r\n    function purchase() external payable {\r\n        require(msg.value >= tokenPriceInWei, \"Not enough ETH sent\");\r\n\r\n        uint256 tokensToTransfer = msg.value / tokenPriceInWei;\r\n        uint256 tokenAmount = tokensToTransfer * (10 ** token.decimals());\r\n\r\n        require(\r\n            token.balanceOf(address(this)) >= tokenAmount,\r\n            \"TokenSale out of tokens\"\r\n        );\r\n\r\n        bool success = token.transfer(msg.sender, tokenAmount);\r\n        require(success, \"Token transfer failed\");\r\n\r\n        uint256 remainder = msg.value - (tokensToTransfer * tokenPriceInWei);\r\n        if (remainder > 0) {\r\n            payable(msg.sender).transfer(remainder);\r\n        }\r\n    }\r\n}"
+      }
+    }
+  }
+}

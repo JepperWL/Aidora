@@ -1,0 +1,1726 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aidora - Where Crypto Meets Hope</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Clash+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .clash-display {
+            font-family: 'Clash Display', sans-serif;
+        }
+
+        .montserrat {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        :root {
+            --navy: #0A1A2F;
+            --deep-navy: #050E1A;
+            --royal-blue: #3A8DFF;
+            --soft-gold: #D4AF37;
+            --bright-gold: #FFD700;
+            --emerald: #10B981;
+            --purple: #A855F7;
+            --light-blue: #E3EEFF;
+            --text-primary: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --accent-blue: #2563EB;
+        }
+
+        body {
+            background: var(--deep-navy);
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        /* Enhanced Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, var(--royal-blue), var(--soft-gold), var(--bright-gold), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 4s ease infinite;
+            background-size: 300% 300%;
+        }
+
+        @keyframes gradient-shift {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        /* Particle Background */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            animation: float-particle 15s infinite;
+        }
+
+        @keyframes float-particle {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100px) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Logo with advanced glow */
+        .logo-glow {
+            filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.6)) drop-shadow(0 0 40px rgba(58, 141, 255, 0.4)) drop-shadow(0 0 60px rgba(168, 85, 247, 0.3));
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+
+            0%,
+            100% {
+                filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.6)) drop-shadow(0 0 40px rgba(58, 141, 255, 0.4)) drop-shadow(0 0 60px rgba(168, 85, 247, 0.3));
+            }
+
+            50% {
+                filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.9)) drop-shadow(0 0 60px rgba(58, 141, 255, 0.7)) drop-shadow(0 0 90px rgba(168, 85, 247, 0.5));
+            }
+        }
+
+        /* Enhanced CTA Button */
+        .cta-button {
+            background: linear-gradient(135deg, var(--royal-blue), var(--purple), var(--soft-gold));
+            background-size: 200% 200%;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px rgba(58, 141, 255, 0.4), 0 8px 40px rgba(168, 85, 247, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: gradient-move 8s ease infinite;
+        }
+
+        @keyframes gradient-move {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.6s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 15px 50px rgba(212, 175, 55, 0.6), 0 20px 60px rgba(168, 85, 247, 0.5);
+        }
+
+        /* Animated gradient border */
+        .gradient-border {
+            position: relative;
+            background: transparent;
+            color: var(--text-primary);
+            border-radius: 1rem;
+            padding: 1rem 2rem;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 1rem;
+            padding: 2px;
+            background: linear-gradient(135deg, var(--royal-blue), var(--purple), var(--soft-gold));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            transition: all 0.4s ease;
+            animation: rotate-border 4s linear infinite;
+        }
+
+        @keyframes rotate-border {
+            0% {
+                filter: hue-rotate(0deg);
+            }
+
+            100% {
+                filter: hue-rotate(360deg);
+            }
+        }
+
+        .gradient-border:hover::before {
+            padding: 3px;
+        }
+
+        .gradient-border:hover {
+            background: linear-gradient(135deg, rgba(58, 141, 255, 0.15), rgba(168, 85, 247, 0.15));
+            transform: translateY(-2px);
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-80px);
+            transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(80px);
+            transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Enhanced card hover effects */
+        .card-hover {
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(30px);
+            background: rgba(10, 26, 47, 0.7);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-hover::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(58, 141, 255, 0.2) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            transform: scale(0.5);
+        }
+
+        .card-hover:hover::before {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 30px 60px rgba(212, 175, 55, 0.4),
+                0 0 40px rgba(58, 141, 255, 0.3),
+                0 0 60px rgba(168, 85, 247, 0.2);
+            border-color: var(--royal-blue);
+            background: rgba(10, 26, 47, 0.95);
+        }
+
+        /* Feature icons with 3D effect */
+        .feature-icon {
+            background: linear-gradient(135deg, var(--royal-blue), var(--purple), var(--soft-gold));
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3), 0 0 20px rgba(168, 85, 247, 0.3);
+            transition: all 0.5s ease;
+            position: relative;
+        }
+
+        .feature-icon::after {
+            content: '';
+            position: absolute;
+            inset: 2px;
+            background: var(--navy);
+            border-radius: inherit;
+            z-index: -1;
+        }
+
+        .card-hover:hover .feature-icon {
+            transform: scale(1.15) rotate(10deg) translateY(-5px);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.6), 0 0 40px rgba(168, 85, 247, 0.5);
+        }
+
+        /* Navigation */
+        nav {
+            backdrop-filter: blur(30px);
+            background: rgba(10, 26, 47, 0.95);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(10, 26, 47, 0.98);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Advanced mesh gradient */
+        .hero-glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(140px);
+            opacity: 0.2;
+            pointer-events: none;
+            animation: float-glow 10s ease-in-out infinite;
+        }
+
+        @keyframes float-glow {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.2;
+            }
+
+            33% {
+                transform: translate(60px, -40px) scale(1.2);
+                opacity: 0.25;
+            }
+
+            66% {
+                transform: translate(-40px, 50px) scale(0.9);
+                opacity: 0.22;
+            }
+        }
+
+        /* Enhanced stat cards */
+        .stat-card {
+            background: linear-gradient(135deg, rgba(10, 26, 47, 0.95), rgba(58, 141, 255, 0.1));
+            border: 2px solid rgba(212, 175, 55, 0.4);
+            backdrop-filter: blur(30px);
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.2);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .stat-card:hover::after {
+            opacity: 1;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px) scale(1.08);
+            border-color: var(--purple);
+            box-shadow: 0 20px 60px rgba(58, 141, 255, 0.5),
+                0 0 50px rgba(212, 175, 55, 0.4),
+                0 0 80px rgba(168, 85, 247, 0.3);
+        }
+
+        /* Animated counter */
+        @keyframes count-up {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .counter {
+            animation: count-up 1s ease-out;
+        }
+
+        /* Enhanced problem icons */
+        .problem-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(58, 141, 255, 0.2), rgba(168, 85, 247, 0.2), rgba(212, 175, 55, 0.2));
+            border: 2px solid rgba(212, 175, 55, 0.5);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .problem-icon::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+
+        .problem-icon:hover::before {
+            transform: translateX(100%);
+        }
+
+        .problem-icon:hover {
+            background: linear-gradient(135deg, rgba(58, 141, 255, 0.4), rgba(168, 85, 247, 0.4), rgba(212, 175, 55, 0.4));
+            transform: rotate(360deg) scale(1.15);
+            border-color: var(--bright-gold);
+            box-shadow: 0 10px 40px rgba(168, 85, 247, 0.5);
+        }
+
+        /* Ticker tape enhancement */
+        .ticker-tape {
+            background: linear-gradient(90deg, rgba(212, 175, 55, 0.1), rgba(58, 141, 255, 0.1), rgba(168, 85, 247, 0.1));
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .ticker-content {
+            display: inline-block;
+            animation: ticker 40s linear infinite;
+            padding-left: 100%;
+        }
+
+        @keyframes ticker {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(-100%, 0);
+            }
+        }
+
+        /* Feature badge */
+        .feature-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: linear-gradient(135deg, rgba(58, 141, 255, 0.3), rgba(168, 85, 247, 0.3));
+            border: 2px solid rgba(212, 175, 55, 0.5);
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            animation: badge-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes badge-pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 0 40px rgba(168, 85, 247, 0.6);
+            }
+        }
+
+        /* Timeline styles */
+        .timeline-item {
+            position: relative;
+            padding-left: 3rem;
+            padding-bottom: 3rem;
+            border-left: 2px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .timeline-item:hover {
+            border-left-color: var(--royal-blue);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -7px;
+            top: 0;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--soft-gold);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6), 0 0 40px rgba(168, 85, 247, 0.4);
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 20px rgba(212, 175, 55, 0.6), 0 0 40px rgba(168, 85, 247, 0.4);
+            }
+
+            50% {
+                transform: scale(1.3);
+                box-shadow: 0 0 30px rgba(212, 175, 55, 0.9), 0 0 60px rgba(168, 85, 247, 0.6);
+            }
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            z-index: 10;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            40% {
+                transform: translateX(-50%) translateY(-15px);
+            }
+
+            60% {
+                transform: translateX(-50%) translateY(-8px);
+            }
+        }
+
+        /* Glass effect */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Interactive comparison slider */
+        .comparison-card {
+            transition: all 0.5s ease;
+            position: relative;
+        }
+
+        .comparison-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent, rgba(168, 85, 247, 0.1));
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .comparison-card:hover::before {
+            opacity: 1;
+        }
+
+        .comparison-card:hover {
+            transform: scale(1.05);
+        }
+
+        /* Heading underline */
+        .heading-underline {
+            display: inline-block;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .heading-underline::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--royal-blue), var(--purple), var(--soft-gold), transparent);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        /* Number animation */
+        .number-animate {
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover .number-animate {
+            transform: scale(1.1);
+        }
+
+        /* Progress bar */
+        .progress-bar {
+            height: 8px;
+            background: rgba(212, 175, 55, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--royal-blue), var(--purple), var(--soft-gold));
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            animation: progress-shine 2s ease-in-out infinite;
+        }
+
+        @keyframes progress-shine {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shine 2s ease-in-out infinite;
+        }
+
+        @keyframes shine {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* Team member card */
+        .team-card {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .team-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(58, 141, 255, 0.2), rgba(168, 85, 247, 0.2));
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .team-card:hover::before {
+            opacity: 1;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px) scale(1.05);
+        }
+
+        /* FAQ accordion */
+        .faq-item {
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            background: rgba(58, 141, 255, 0.05);
+        }
+
+        .faq-question {
+            cursor: pointer;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: var(--soft-gold);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+        }
+
+        .faq-answer.active {
+            max-height: 500px;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            height: 100vh;
+            background: rgba(10, 26, 47, 0.98);
+            backdrop-filter: blur(30px);
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 100;
+            padding: 2rem;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        /* Tokenomics chart */
+        .chart-segment {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .chart-segment:hover {
+            opacity: 0.8;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <!-- Particle Background -->
+    <div class="particles fixed inset-0 pointer-events-none" id="particles"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full top-0 z-50" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <div class="w-14 h-14 rounded-2xl flex items-center justify-center logo-glow">
+                        <img src="logo.png" class="w-full h-full object-contain">
+
+
+                    </div>
+                    <div>
+                        <h1 class="text-3xl font-bold gradient-text clash-display">Aidora</h1>
+
+                    </div>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#problem"
+                        class="text-text-primary hover:text-soft-gold transition font-semibold">Problem</a>
+                    <a href="#solution"
+                        class="text-text-primary hover:text-soft-gold transition font-semibold">Solution</a>
+                    <a href="#mission"
+                        class="text-text-primary hover:text-soft-gold transition font-semibold">Mission</a>
+                    <a href="#tokenomics"
+                        class="text-text-primary hover:text-soft-gold transition font-semibold">Tokenomics</a>
+                    <a href="#roadmap"
+                        class="text-text-primary hover:text-soft-gold transition font-semibold">Roadmap</a>
+                    <a href="#invest" class="text-text-primary hover:text-soft-gold transition font-semibold">Invest</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="aidorabuytoken.html"
+                        class="cta-button text-white px-8 py-3 rounded-xl font-bold inline-block">
+                        Buy ADR Token
+                    </a>
+                    <button class="md:hidden text-white text-2xl" id="mobile-menu-btn">☰</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="flex justify-end mb-8">
+            <button class="text-white text-3xl" id="close-menu-btn">×</button>
+        </div>
+        <div class="flex flex-col space-y-6">
+            <a href="#problem"
+                class="text-text-primary text-2xl font-semibold hover:text-soft-gold transition">Problem</a>
+            <a href="#solution"
+                class="text-text-primary text-2xl font-semibold hover:text-soft-gold transition">Solution</a>
+            <a href="#mission"
+                class="text-text-primary text-2xl font-semibold hover:text-soft-gold transition">Mission</a>
+            <a href="#tokenomics"
+                class="text-text-primary text-2xl font-semibold hover:text-soft-gold transition">Tokenomics</a>
+            <a href="#roadmap"
+                class="text-text-primary text-2xl font-semibold hover:text-soft-gold transition">Roadmap</a>
+            <a href="#invest"
+                class="text-text-primary text-2xl font-semibold hover:text-soft-gold transition">Invest</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative pt-40 pb-40 px-4 overflow-hidden min-h-screen flex items-center"
+        style="background: linear-gradient(180deg, var(--deep-navy) 0%, var(--navy) 100%);">
+        <div class="hero-glow"
+            style="width: 700px; height: 700px; top: -250px; left: -150px; background: var(--royal-blue);"></div>
+        <div class="hero-glow"
+            style="width: 600px; height: 600px; bottom: -200px; right: -150px; background: var(--soft-gold);"></div>
+        <div class="hero-glow"
+            style="width: 500px; height: 500px; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--purple);">
+        </div>
+
+        <div class="max-w-7xl mx-auto text-center relative z-10 w-full">
+            <div class="fade-in mb-16">
+                <div class="inline-block mb-8">
+                    <span class="feature-badge text-white">🚀 Now Live on Blockchain</span>
+                </div>
+                <h1 class="text-7xl md:text-9xl font-black mb-10 leading-tight clash-display">
+                    One Coin.<br />
+                    <span class="gradient-text">One Act of Hope.</span>
+                </h1>
+                <p class="text-3xl md:text-4xl text-light-blue mb-8 max-w-5xl mx-auto font-light">
+                    Where Crypto Meets a World Where Giving Never Gets Lost
+                </p>
+                <p class="text-xl md:text-2xl text-text-secondary mb-20 max-w-4xl mx-auto leading-relaxed">
+                    Aidora (ADR) is a blockchain-powered humanitarian ecosystem that ensures every donation reaches
+                    those who need it most — with complete transparency and zero corruption.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-8 justify-center items-center">
+                    <a href="aidorabuytoken.html"
+                        class="cta-button text-white px-14 py-6 rounded-2xl font-bold text-2xl inline-block">
+                        🪙 Buy ADR Token
+                    </a>
+                    <a href="https://aidora.gitbook.io/aidora/" target="_blank"
+                        class="gradient-border text-text-primary font-bold text-3xl px-16 py-7 rounded-2xl inline-block">
+                        📖 Learn More
+                    </a>
+                </div>
+            </div>
+
+            <!-- Enhanced Stats Grid -->
+            <div class="mt-32 grid grid-cols-1 md:grid-cols-4 gap-8 fade-in">
+                <div class="stat-card rounded-3xl p-10 text-center">
+                    <div class="text-7xl font-black gradient-text mb-4 counter number-animate">100%</div>
+                    <div class="text-text-primary font-bold text-xl mb-3 montserrat">Transparent</div>
+                    <p class="text-base text-text-secondary leading-relaxed">Every transaction visible on blockchain</p>
+                </div>
+                <div class="stat-card rounded-3xl p-10 text-center">
+                    <div class="text-7xl font-black gradient-text mb-4 counter number-animate">0%</div>
+                    <div class="text-text-primary font-bold text-xl mb-3 montserrat">Corruption</div>
+                    <p class="text-base text-text-secondary leading-relaxed">Immutable and tamper-proof system</p>
+                </div>
+                <div class="stat-card rounded-3xl p-10 text-center">
+                    <div class="text-7xl font-black gradient-text mb-4 counter number-animate">∞</div>
+                    <div class="text-text-primary font-bold text-xl mb-3 montserrat">Global Reach</div>
+                    <p class="text-base text-text-secondary leading-relaxed">Aid flows anywhere, instantly</p>
+                </div>
+                <div class="stat-card rounded-3xl p-10 text-center">
+                    <div class="text-7xl font-black gradient-text mb-4 counter number-animate">24/7</div>
+                    <div class="text-text-primary font-bold text-xl mb-3 montserrat">Always Active</div>
+                    <p class="text-base text-text-secondary leading-relaxed">Automated smart contracts work non-stop</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Ticker Tape -->
+    <div class="ticker-tape py-5">
+        <div class="ticker-content text-soft-gold font-bold text-lg">
+            <span class="mx-10">✨ Revolutionary Blockchain Aid Platform</span>
+            <span class="mx-10">🌍 Global Humanitarian Impact</span>
+            <span class="mx-10">💎 Fully Decentralized</span>
+            <span class="mx-10">🔒 Zero Corruption Guaranteed</span>
+            <span class="mx-10">⚡ Instant Aid Distribution</span>
+            <span class="mx-10">🎯 Smart Contract Automation</span>
+            <span class="mx-10">🌟 Transparent & Trustless</span>
+            <span class="mx-10">✨ Revolutionary Blockchain Aid Platform</span>
+            <span class="mx-10">🌍 Global Humanitarian Impact</span>
+            <span class="mx-10">💎 Fully Decentralized</span>
+        </div>
+    </div>
+
+    <!-- Problem Section -->
+    <section id="problem" class="py-40 px-4 relative">
+        <div class="hero-glow" style="width: 500px; height: 500px; top: 20%; left: 10%; background: var(--royal-blue);">
+        </div>
+        <div class="hero-glow" style="width: 600px; height: 600px; bottom: 10%; right: 10%; background: var(--purple);">
+        </div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center mb-24 fade-in">
+                <span class="feature-badge mb-8 text-lg">⚠️ The Current Crisis</span>
+                <h2 class="text-6xl md:text-8xl font-black mb-8 heading-underline clash-display">
+                    The <span class="gradient-text">Broken State</span> of Global Aid
+                </h2>
+                <p class="text-3xl text-text-secondary max-w-4xl mx-auto">
+                    Lack of Transparency and Efficiency in Social Welfare Systems
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mb-24">
+                <div class="slide-in-left space-y-10">
+                    <div class="flex items-start space-x-6 group">
+                        <div class="problem-icon rounded-3xl flex items-center justify-center flex-shrink-0 text-5xl">
+                            💸
+                        </div>
+                        <div>
+                            <h3
+                                class="font-black text-3xl mb-4 text-text-primary group-hover:text-soft-gold transition clash-display">
+                                30-40% Lost to Overhead</h3>
+                            <p class="text-text-secondary text-xl leading-relaxed">Administrative burden consumes up to
+                                40% of aid before it reaches recipients. Money meant for people in need funds
+                                bureaucracy instead.</p>
+                            <div class="mt-4 progress-bar">
+                                <div class="progress-fill" style="width: 40%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-6 group">
+                        <div class="problem-icon rounded-3xl flex items-center justify-center flex-shrink-0 text-5xl">
+                            🚫
+                        </div>
+                        <div>
+                            <h3
+                                class="font-black text-3xl mb-4 text-text-primary group-hover:text-soft-gold transition clash-display">
+                                Billions Lost to Fraud</h3>
+                            <p class="text-text-secondary text-xl leading-relaxed">Corruption and fraud divert billions
+                                annually from those in need. Centralized control creates countless opportunities for
+                                abuse.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-6 group">
+                        <div class="problem-icon rounded-3xl flex items-center justify-center flex-shrink-0 text-5xl">
+                            🔒
+                        </div>
+                        <div>
+                            <h3
+                                class="font-black text-3xl mb-4 text-text-primary group-hover:text-soft-gold transition clash-display">
+                                Millions Excluded</h3>
+                            <p class="text-text-secondary text-xl leading-relaxed">Complex processes exclude many
+                                eligible people who desperately need help. Bureaucracy becomes a barrier to survival.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-6 group">
+                        <div class="problem-icon rounded-3xl flex items-center justify-center flex-shrink-0 text-5xl">
+                            ⏱️
+                        </div>
+                        <div>
+                            <h3
+                                class="font-black text-3xl mb-4 text-text-primary group-hover:text-soft-gold transition clash-display">
+                                Delayed Response</h3>
+                            <p class="text-text-secondary text-xl leading-relaxed">Centralized systems create
+                                bottlenecks, delaying critical aid during emergencies when every second counts.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide-in-right">
+                    <div class="glass-effect rounded-3xl p-14 border-2 border-soft-gold/30 card-hover">
+                        <div class="flex items-center mb-10">
+                            <div
+                                class="w-24 h-24 gradient-bg-animated rounded-3xl flex items-center justify-center text-6xl mr-8 feature-icon">
+                                ⚠️
+                            </div>
+                            <h3 class="text-5xl font-black gradient-text clash-display">The Harsh Reality</h3>
+                        </div>
+                        <p class="text-text-primary leading-relaxed text-2xl mb-10">
+                            Traditional aid systems fail the people they're meant to serve:
+                        </p>
+                        <ul class="space-y-6 text-text-secondary text-xl">
+                            <li class="flex items-start">
+                                <span class="text-soft-gold mr-4 text-3xl">•</span>
+                                <span>Only 60-70% of aid reaches intended recipients</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-soft-gold mr-4 text-3xl">•</span>
+                                <span>Weeks or months of delays in emergency situations</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-soft-gold mr-4 text-3xl">•</span>
+                                <span>No accountability or transparency in fund allocation</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-soft-gold mr-4 text-3xl">•</span>
+                                <span>Vulnerable populations systematically excluded</span>
+                            </li>
+                        </ul>
+
+                        <div
+                            class="mt-10 p-8 bg-gradient-to-r from-royal-blue/20 to-purple/20 rounded-2xl border-l-4 border-soft-gold">
+                            <p class="text-text-primary font-bold text-2xl">
+                                "The current system is broken beyond repair. We need a complete paradigm shift."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution" class="py-40 px-4 relative"
+        style="background: linear-gradient(180deg, var(--navy) 0%, var(--deep-navy) 100%);">
+        <div class="hero-glow"
+            style="width: 700px; height: 700px; top: -200px; right: -100px; background: var(--soft-gold);"></div>
+        <div class="hero-glow"
+            style="width: 600px; height: 600px; bottom: -150px; left: -100px; background: var(--emerald);"></div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center mb-24 fade-in">
+                <span class="feature-badge mb-8 text-lg">✨ The Aidora Solution</span>
+                <h2 class="text-6xl md:text-8xl font-black mb-8 heading-underline clash-display">
+                    <span class="gradient-text">Blockchain-Powered</span> Transparency
+                </h2>
+                <p class="text-3xl text-text-secondary max-w-4xl mx-auto">
+                    Revolutionary technology meets humanitarian purpose
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-20">
+                <div class="card-hover rounded-3xl p-10 fade-in">
+                    <div class="feature-icon w-20 h-20 rounded-2xl flex items-center justify-center text-5xl mb-8">
+                        🔗
+                    </div>
+                    <h3 class="text-3xl font-black mb-6 text-text-primary clash-display">Blockchain Foundation</h3>
+                    <p class="text-text-secondary text-lg leading-relaxed mb-6">
+                        Every transaction is permanently recorded on an immutable ledger, ensuring complete transparency
+                        and accountability.
+                    </p>
+                    <ul class="space-y-3 text-text-secondary">
+                        <li class="flex items-start">
+                            <span class="text-emerald mr-3 mt-1">✓</span>
+                            <span>Tamper-proof records</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-emerald mr-3 mt-1">✓</span>
+                            <span>Real-time tracking</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-emerald mr-3 mt-1">✓</span>
+                            <span>Public verification</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card-hover rounded-3xl p-10 fade-in" style="animation-delay: 0.1s">
+                    <div class="feature-icon w-20 h-20 rounded-2xl flex items-center justify-center text-5xl mb-8">
+                        ⚡
+                    </div>
+                    <h3 class="text-3xl font-black mb-6 text-text-primary clash-display">Smart Contracts</h3>
+                    <p class="text-text-secondary text-lg leading-relaxed mb-6">
+                        Automated distribution ensures aid reaches recipients instantly without intermediaries or
+                        delays.
+                    </p>
+                    <ul class="space-y-3 text-text-secondary">
+                        <li class="flex items-start">
+                            <span class="text-emerald mr-3 mt-1">✓</span>
+                            <span>Zero corruption</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-emerald mr-3 mt-1">✓</span>
+                            <span>Instant execution</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-emerald mr-3 mt-1">✓</span>
+                            <span>Automated compliance</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card-hover rounded-3xl p-10 fade-in" style="animation-delay: 0.2s">
+                    <div class="feature-icon w-20 h-20 rounded-2xl flex items-center justify-center text-5xl mb-8">
+                        🌍
+                    </div>
+                    <h3 class="text-3xl font-black mb-6 text-text-primary clash-display">Global Access</h3>
+                    <p class="text-text-secondary text-lg leading-relaxed mb-6">
+                        Decentralized platform removes geographical barriers, enabling worldwide participation and
+                        impact.
+                    </p>
+                    <ul class="space-y-3 text-text-secondary">
+                        <li class="flex items-start">
+                            <span class="text-emerald mr-3 mt-1">✓</span>
+                            <span>No borders</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-emerald mr-3 mt-1">✓</span>
+                            <span>24/7 availability</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-emerald mr-3 mt-1">✓</span>
+                            <span>Universal inclusion</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card-hover rounded-3xl p-10 fade-in" style="animation-delay: 0.3s">
+                    <div class="feature-icon w-20 h-20 rounded-2xl flex items-center justify-center text-5xl mb-8">
+                        🔍
+                    </div>
+                    <h3 class="text-3xl font-black mb-6 text-text-primary clash-display">Full Transparency</h3>
+                    <p class="text-text-secondary text-lg leading-relaxed mb-6">
+                        Track every donation from source to recipient with complete visibility and accountability.
+                    </p>
+                    <ul class="space-y-3 text-text-secondary">
+                        <li class="flex items-start">
+                            <span class="text-emerald mr-3 mt-1">✓</span>
+                            <span>Public ledger</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-emerald mr-3 mt-1">✓</span>
+                            <span>Audit trails</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-emerald mr-3 mt-1">✓</span>
+                            <span>Impact reporting</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card-hover rounded-3xl p-10 fade-in" style="animation-delay: 0.4s">
+                    <div class="feature-icon w-20 h-20 rounded-2xl flex items-center justify-center text-5xl mb-8">
+                        💰
+                    </div>
+                    <h3 class="text-3xl font-black mb-6 text-text-primary clash-display">Low Costs</h3>
+                    <p class="text-text-secondary text-lg leading-relaxed mb-6">
+                        Eliminate overhead by removing middlemen, ensuring maximum aid reaches those in need.
+                    </p>
+                    <ul class="space-y-3 text-text-secondary">
+                        <li class="flex items-start">
+                            <span class="text-emerald mr-3 mt-1">✓</span>
+                            <span>Minimal fees</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-emerald mr-3 mt-1">✓</span>
+                            <span>No intermediaries</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-emerald mr-3 mt-1">✓</span>
+                            <span>Direct impact</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card-hover rounded-3xl p-10 fade-in" style="animation-delay: 0.5s">
+                    <div class="feature-icon w-20 h-20 rounded-2xl flex items-center justify-center text-5xl mb-8">
+                        🛡️
+                    </div>
+                    <h3 class="text-3xl font-black mb-6 text-text-primary clash-display">Secure & Private</h3>
+                    <p class="text-text-secondary text-lg leading-relaxed mb-6">
+                        Military-grade encryption protects sensitive data while maintaining transparency where it
+                        matters.
+                    </p>
+                    <ul class="space-y-3 text-text-secondary">
+                        <li class="flex items-start">
+                            <span class="text-emerald mr-3 mt-1">✓</span>
+                            <span>Data protection</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-emerald mr-3 mt-1">✓</span>
+                            <span>Privacy controls</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-emerald mr-3 mt-1">✓</span>
+                            <span>Compliance ready</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tokenomics Section -->
+    <section id="tokenomics" class="py-40 px-4 relative">
+        <div class="hero-glow" style="width: 600px; height: 600px; top: 10%; left: -100px; background: var(--purple);">
+        </div>
+        <div class="hero-glow"
+            style="width: 500px; height: 500px; bottom: 10%; right: -100px; background: var(--royal-blue);"></div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center mb-24 fade-in">
+                <span class="feature-badge mb-8 text-lg">💎 Token Economics</span>
+                <h2 class="text-6xl md:text-8xl font-black mb-8 heading-underline clash-display">
+                    ADR <span class="gradient-text">Tokenomics</span>
+                </h2>
+                <p class="text-3xl text-text-secondary max-w-4xl mx-auto">
+                    Designed for sustainable growth and maximum impact
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="fade-in">
+                    <div class="glass-effect rounded-3xl p-14 border-2 border-soft-gold/30">
+                        <h3 class="text-4xl font-black mb-10 gradient-text clash-display">Token Distribution</h3>
+
+                        <div class="space-y-8">
+                            <div>
+                                <div class="flex justify-between mb-3">
+                                    <span class="text-text-primary font-bold text-xl">Welfare Distribution Pool (aid
+                                        programs) (40%)</span>
+                                    <span class="text-soft-gold font-bold text-xl">40%</span>
+                                </div>
+                                <div class="progress-bar h-6">
+                                    <div class="progress-fill" style="width: 40%;"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between mb-3">
+                                    <span class="text-text-primary font-bold text-xl">Development & Operations
+                                        (20%)</span>
+                                    <span class="text-royal-blue font-bold text-xl">20%</span>
+                                </div>
+                                <div class="progress-bar h-6">
+                                    <div class="progress-fill" style="width: 20%;"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between mb-3">
+                                    <span class="text-text-primary font-bold text-xl">Community & Governance Incentives
+                                        (15%)</span>
+                                    <span class="text-emerald font-bold text-xl">15%</span>
+                                </div>
+                                <div class="progress-bar h-6">
+                                    <div class="progress-fill" style="width: 15%;"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between mb-3">
+                                    <span class="text-text-primary font-bold text-xl">Partnerships & NGO Integration
+                                        (15%)</span>
+                                    <span class="text-purple font-bold text-xl">15%</span>
+                                </div>
+                                <div class="progress-bar h-6">
+                                    <div class="progress-fill" style="width: 15%;"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between mb-3">
+                                    <span class="text-text-primary font-bold text-xl">Founders & Team (10%)</span>
+                                    <span class="text-text-secondary font-bold text-xl">10%</span>
+                                </div>
+                                <div class="progress-bar h-6">
+                                    <div class="progress-fill" style="width: 10%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fade-in space-y-8">
+                    <div class="card-hover rounded-3xl p-10">
+                        <div class="flex items-center mb-6">
+                            <div
+                                class="w-16 h-16 gradient-bg-animated rounded-2xl flex items-center justify-center text-4xl mr-6">
+                                🪙
+                            </div>
+                            <div>
+                                <h4 class="text-2xl font-black text-text-primary clash-display">Total Supply</h4>
+                                <p class="text-4xl font-black gradient-text montserrat">1 Billion ADR</p>
+                            </div>
+                        </div>
+                        <p class="text-text-secondary text-lg">Fixed supply with deflationary mechanisms to increase
+                            scarcity and value over time.</p>
+                    </div>
+
+                    <div class="card-hover rounded-3xl p-10">
+                        <div class="flex items-center mb-6">
+                            <div
+                                class="w-16 h-16 gradient-bg-animated rounded-2xl flex items-center justify-center text-4xl mr-6">
+                                🔥
+                            </div>
+                            <div>
+                                <h4 class="text-2xl font-black text-text-primary clash-display">Token Burns</h4>
+                                <p class="text-3xl font-black gradient-text montserrat">Quarterly</p>
+                            </div>
+                        </div>
+                        <p class="text-text-secondary text-lg">Regular token burns reduce supply, creating deflationary
+                            pressure and increasing holder value.</p>
+                    </div>
+
+                    <div class="card-hover rounded-3xl p-10">
+                        <div class="flex items-center mb-6">
+                            <div
+                                class="w-16 h-16 gradient-bg-animated rounded-2xl flex items-center justify-center text-4xl mr-6">
+                                💰
+                            </div>
+                            <div>
+                                <h4 class="text-2xl font-black text-text-primary clash-display">Staking Rewards</h4>
+                                <p class="text-3xl font-black gradient-text montserrat">Up to 12% APY</p>
+                            </div>
+                        </div>
+                        <p class="text-text-secondary text-lg">Earn passive income by staking ADR tokens while
+                            supporting the humanitarian ecosystem.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section id="roadmap" class="py-40 px-4 relative"
+        style="background: linear-gradient(180deg, var(--navy) 0%, var(--deep-navy) 100%);">
+        <div class="hero-glow"
+            style="width: 700px; height: 700px; top: -200px; left: 50%; transform: translateX(-50%); background: var(--soft-gold);">
+        </div>
+
+        <div class="max-w-5xl mx-auto relative z-10">
+            <div class="text-center mb-24 fade-in">
+                <span class="feature-badge mb-8 text-lg">🗺️ Our Journey</span>
+                <h2 class="text-6xl md:text-8xl font-black mb-8 heading-underline clash-display">
+                    <span class="gradient-text">Roadmap</span> to Impact
+                </h2>
+                <p class="text-3xl text-text-secondary max-w-3xl mx-auto">
+                    Building the future of humanitarian aid, one milestone at a time
+                </p>
+            </div>
+
+            <div class="space-y-0 fade-in">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="card-hover rounded-3xl p-10">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+                            <h3 class="text-4xl font-black gradient-text clash-display">Q4 2025</h3>
+                            <span class="feature-badge mt-4 md:mt-0">✅ Foundation</span>
+                        </div>
+                        <h4 class="text-3xl font-bold text-text-primary mb-6">Foundation & Launch</h4>
+                        <ul class="space-y-4 text-text-secondary text-lg">
+                            <li class="flex items-start">
+                                <span class="text-emerald mr-4 mt-1 text-2xl">✓</span>
+                                <span>Release of the whitepaper</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-emerald mr-4 mt-1 text-2xl">✓</span>
+                                <span>Smart contract development and audit</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-emerald mr-4 mt-1 text-2xl">✓</span>
+                                <span>Token creation and smart contract architecture</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-emerald mr-4 mt-1 text-2xl">✓</span>
+                                <span>Building community and partnerships with NGOs</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="card-hover rounded-3xl p-10">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+                            <h3 class="text-4xl font-black gradient-text clash-display">Q1 2026</h3>
+                            <span class="feature-badge mt-4 md:mt-0">📅 Upcoming Programs</span>
+                        </div>
+                        <h4 class="text-3xl font-bold text-text-primary mb-6">Platform Development</h4>
+                        <ul class="space-y-4 text-text-secondary text-lg">
+                            <li class="flex items-start">
+                                <span class="text-royal-blue mr-4 mt-1 text-2xl">→</span>
+                                <span>Small-scale aid distribution pilots in select regions</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-royal-blue mr-4 mt-1 text-2xl">→</span>
+                                <span>Integration of blockchain-based ID for recipient verification</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-royal-blue mr-4 mt-1 text-2xl">→</span>
+                                <span>Launch of ADR token on decentralized exchanges</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-royal-blue mr-4 mt-1 text-2xl">→</span>
+                                <span>Staking mechanism implementation</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="card-hover rounded-3xl p-10">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+                            <h3 class="text-4xl font-black gradient-text clash-display">Q2 2026</h3>
+                            <span class="feature-badge mt-4 md:mt-0">🚀 Expansion</span>
+                        </div>
+                        <h4 class="text-3xl font-bold text-text-primary mb-6">Partnerships with multiple NGOs and local
+                            governments</h4>
+                        <ul class="space-y-4 text-text-secondary text-lg">
+                            <li class="flex items-start">
+                                <span class="text-soft-gold mr-4 mt-1 text-2xl">○</span>
+                                <span>Development of a mobile app for recipients and donors</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-soft-gold mr-4 mt-1 text-2xl">○</span>
+                                <span>Major exchange listings (Tier 1)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-soft-gold mr-4 mt-1 text-2xl">○</span>
+                                <span>Global donor-to-recipient transactions in multiple currencies</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-soft-gold mr-4 mt-1 text-2xl">○</span>
+                                <span>Strategic institutional partnerships</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="card-hover rounded-3xl p-10">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+                            <h3 class="text-4xl font-black gradient-text clash-display">Q3 2026</h3>
+                            <span class="feature-badge mt-4 md:mt-0">🔮 Global Adoption</span>
+                        </div>
+                        <h4 class="text-3xl font-bold text-text-primary mb-6">Ecosystem Maturity</h4>
+                        <ul class="space-y-4 text-text-secondary text-lg">
+                            <li class="flex items-start">
+                                <span class="text-purple mr-4 mt-1 text-2xl">○</span>
+                                <span>Full DAO activation for governance</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-purple mr-4 mt-1 text-2xl">○</span>
+                                <span>Large-scale integrations with international aid agencies</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-purple mr-4 mt-1 text-2xl">○</span>
+                                <span>Cross-border social welfare at a global scale</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-purple mr-4 mt-1 text-2xl">○</span>
+                                <span>Impact: 1M+ people helped</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="invest" class="py-40 px-4 relative overflow-hidden">
+        <div class="hero-glow"
+            style="width: 800px; height: 800px; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--royal-blue);">
+        </div>
+        <div class="hero-glow" style="width: 600px; height: 600px; top: 20%; right: -100px; background: var(--purple);">
+        </div>
+        <div class="hero-glow"
+            style="width: 700px; height: 700px; bottom: -150px; left: -100px; background: var(--soft-gold);"></div>
+
+        <div class="max-w-5xl mx-auto text-center relative z-10 fade-in">
+            <div class="glass-effect rounded-3xl p-20 border-2 border-soft-gold/30">
+                <h2 class="text-6xl md:text-8xl font-black mb-8 clash-display">
+                    Join the <span class="gradient-text">Revolution</span>
+                </h2>
+                <p class="text-3xl text-text-secondary mb-12 max-w-3xl mx-auto">
+                    Be part of the movement that's transforming global humanitarian aid forever
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                    <div>
+                        <div class="text-6xl font-black gradient-text mb-4 counter">5K+</div>
+                        <p class="text-xl text-text-secondary">Token Holders</p>
+                    </div>
+                    <div>
+                        <div class="text-6xl font-black gradient-text mb-4 counter">$2.5M+</div>
+                        <p class="text-xl text-text-secondary">Aid Distributed</p>
+                    </div>
+                    <div>
+                        <div class="text-6xl font-black gradient-text mb-4 counter">7+</div>
+                        <p class="text-xl text-text-secondary">Partners</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-8 justify-center items-center">
+                    <a href="aidorabuytoken.html"
+                        class="cta-button text-white px-16 py-7 rounded-2xl font-bold text-3xl inline-block">
+                        🪙 Buy ADR Now
+                    </a>
+                    <a href="https://aidora.gitbook.io/aidora/" target="_blank"
+                        class="gradient-border text-text-primary font-bold text-3xl px-16 py-7 rounded-2xl inline-block">
+                        📄 Read Whitepaper
+                    </a>
+                </div>
+
+                <div class="mt-16 flex flex-wrap justify-center gap-6">
+                    <a href="#" class="social-icon text-4xl">
+                        <div
+                            class="w-16 h-16 rounded-full border-2 border-soft-gold/40 flex items-center justify-center hover:border-soft-gold hover:bg-soft-gold/20 transition">
+                            𝕏
+                        </div>
+                    </a>
+                    <a href="#" class="social-icon text-4xl">
+                        <div
+                            class="w-16 h-16 rounded-full border-2 border-soft-gold/40 flex items-center justify-center hover:border-soft-gold hover:bg-soft-gold/20 transition">
+                            💬
+                        </div>
+                    </a>
+                    <a href="#" class="social-icon text-4xl">
+                        <div
+                            class="w-16 h-16 rounded-full border-2 border-soft-gold/40 flex items-center justify-center hover:border-soft-gold hover:bg-soft-gold/20 transition">
+                            📱
+                        </div>
+                    </a>
+                    <a href="#" class="social-icon text-4xl">
+                        <div
+                            class="w-16 h-16 rounded-full border-2 border-soft-gold/40 flex items-center justify-center hover:border-soft-gold hover:bg-soft-gold/20 transition">
+                            🌐
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 px-4 border-t border-soft-gold/20" style="background: var(--deep-navy);">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="w-12 h-12 rounded-xl flex items-center justify-center logo-glow">
+                           <img src="logo.png" class="w-full h-full object-contain">
+
+
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold gradient-text clash-display">Aidora</h3>
+                            <p class="text-xs text-soft-gold">ADR TOKEN</p>
+                        </div>
+                    </div>
+                    <p class="text-text-secondary leading-relaxed">
+                        Transforming humanitarian aid through blockchain technology and transparency.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-xl font-bold text-text-primary mb-6 montserrat">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#problem" class="text-text-secondary hover:text-soft-gold transition">Problem</a>
+                        </li>
+                        <li><a href="#solution" class="text-text-secondary hover:text-soft-gold transition">Solution</a>
+                        </li>
+                        <li><a href="#tokenomics"
+                                class="text-text-secondary hover:text-soft-gold transition">Tokenomics</a></li>
+                        <li><a href="#roadmap" class="text-text-secondary hover:text-soft-gold transition">Roadmap</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xl font-bold text-text-primary mb-6 montserrat">Resources</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-text-secondary hover:text-soft-gold transition">Whitepaper</a></li>
+                        <li><a href="#" class="text-text-secondary hover:text-soft-gold transition">Documentation</a>
+                        </li>
+                        <li><a href="#" class="text-text-secondary hover:text-soft-gold transition">Blog</a></li>
+                        <li><a href="#" class="text-text-secondary hover:text-soft-gold transition">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xl font-bold text-text-primary mb-6 montserrat">Community</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-text-secondary hover:text-soft-gold transition">Twitter</a></li>
+                        <li><a href="#" class="text-text-secondary hover:text-soft-gold transition">Telegram</a></li>
+                        <li><a href="#" class="text-text-secondary hover:text-soft-gold transition">Discord</a></li>
+                        <li><a href="#" class="text-text-secondary hover:text-soft-gold transition">Medium</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-soft-gold/20 pt-8 text-center">
+                <p class="text-text-secondary">
+                    © 2025 Aidora. All rights reserved. | <a href="#" class="hover:text-soft-gold transition">Privacy
+                        Policy</a> | <a href="#" class="hover:text-soft-gold transition">Terms of Service</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+        });
+
+        closeMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Particle generation
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+
+                const size = Math.random() * 4 + 2;
+                const startX = Math.random() * window.innerWidth;
+                const duration = Math.random() * 10 + 10;
+                const delay = Math.random() * 5;
+
+                const colors = ['#3A8DFF', '#D4AF37', '#A855F7', '#10B981'];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${startX}px`;
+                particle.style.background = color;
+                particle.style.animationDuration = `${duration}s`;
+                particle.style.animationDelay = `${delay}s`;
+
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        createParticles();
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Counter animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = counter.textContent;
+                if (target.includes('%') || target.includes('+') || target.includes('K') || target.includes('M')) {
+                    // Already animated or contains text
+                    return;
+                }
+            });
+        }
+
+        // Trigger counter animation when visible
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.stat-card').forEach(card => {
+            counterObserver.observe(card);
+        });
+    </script>
+</body>
+
+</html>

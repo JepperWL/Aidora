@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy ADR Tokens - Aidora</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Clash+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .clash-display {
+            font-family: 'Clash Display', sans-serif;
+        }
+
+        .montserrat {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        :root {
+            --navy: #0A1A2F;
+            --deep-navy: #050E1A;
+            --royal-blue: #3A8DFF;
+            --soft-gold: #D4AF37;
+            --bright-gold: #FFD700;
+            --emerald: #10B981;
+            --purple: #A855F7;
+            --red: #EF4444;
+            --light-blue: #E3EEFF;
+            --text-primary: #F8FAFC;
+            --text-secondary: #94A3B8;
+        }
+
+        body {
+            background: var(--deep-navy);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Animated background */
+        .animated-bg {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .bg-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.2;
+            animation: float 15s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(50px, -30px) scale(1.1);
+            }
+
+            66% {
+                transform: translate(-30px, 40px) scale(0.9);
+            }
+        }
+
+        .bg-orb-1 {
+            width: 600px;
+            height: 600px;
+            background: var(--royal-blue);
+            top: -200px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .bg-orb-2 {
+            width: 500px;
+            height: 500px;
+            background: var(--soft-gold);
+            bottom: -150px;
+            right: -100px;
+            animation-delay: 3s;
+        }
+
+        .bg-orb-3 {
+            width: 400px;
+            height: 400px;
+            background: var(--purple);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: 6s;
+        }
+
+        /* Glass morphism card */
+        .glass-card {
+            background: rgba(10, 26, 47, 0.85);
+            backdrop-filter: blur(40px);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+                0 0 30px rgba(58, 141, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.7s;
+        }
+
+        .glass-card:hover::before {
+            left: 100%;
+        }
+
+        .glass-card:hover {
+            border-color: var(--royal-blue);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.6),
+                0 0 50px rgba(58, 141, 255, 0.4);
+            transform: translateY(-5px);
+        }
+
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, var(--royal-blue), var(--purple), var(--soft-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 4s ease infinite;
+            background-size: 200% 200%;
+        }
+
+        @keyframes gradient-shift {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        /* Enhanced buttons */
+        .cta-button {
+            background: linear-gradient(135deg, var(--royal-blue), var(--purple), var(--soft-gold));
+            background-size: 200% 200%;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(58, 141, 255, 0.4);
+            position: relative;
+            overflow: hidden;
+            animation: gradient-move 8s ease infinite;
+        }
+
+        @keyframes gradient-move {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .cta-button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::after {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 45px rgba(58, 141, 255, 0.6),
+                0 0 40px rgba(168, 85, 247, 0.4);
+        }
+
+        .cta-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+            animation: none;
+        }
+
+        .cta-button:disabled:hover {
+            transform: none;
+            box-shadow: 0 10px 30px rgba(58, 141, 255, 0.4);
+        }
+
+        /* Input styles */
+        .input-glow {
+            background: rgba(10, 26, 47, 0.6);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .input-glow:focus {
+            outline: none;
+            border-color: var(--royal-blue);
+            box-shadow: 0 0 30px rgba(58, 141, 255, 0.4);
+            background: rgba(10, 26, 47, 0.8);
+        }
+
+        /* Status messages */
+        .status-success {
+            color: var(--emerald);
+            animation: fade-in 0.5s ease;
+        }
+
+        .status-error {
+            color: var(--red);
+            animation: shake 0.5s ease;
+        }
+
+        .status-info {
+            color: var(--royal-blue);
+            animation: fade-in 0.5s ease;
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-10px);
+            }
+
+            75% {
+                transform: translateX(10px);
+            }
+        }
+
+        /* Divider */
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--royal-blue), var(--purple), var(--soft-gold), transparent);
+            opacity: 0.4;
+        }
+
+        /* Wallet card */
+        .wallet-card {
+            background: linear-gradient(135deg, rgba(58, 141, 255, 0.1), rgba(168, 85, 247, 0.1));
+            border: 2px solid rgba(58, 141, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .wallet-card:hover {
+            border-color: var(--royal-blue);
+            box-shadow: 0 10px 30px rgba(58, 141, 255, 0.3);
+        }
+
+        /* Loading spinner */
+        .spinner {
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            border-top: 3px solid var(--royal-blue);
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Badge */
+        .feature-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: linear-gradient(135deg, rgba(58, 141, 255, 0.3), rgba(168, 85, 247, 0.3));
+            border: 2px solid rgba(212, 175, 55, 0.5);
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            animation: badge-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes badge-pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 0 40px rgba(168, 85, 247, 0.6);
+            }
+        }
+
+        /* Quick amount buttons */
+        .quick-amount-btn {
+            background: rgba(58, 141, 255, 0.1);
+            border: 2px solid rgba(58, 141, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .quick-amount-btn:hover {
+            background: rgba(58, 141, 255, 0.2);
+            border-color: var(--royal-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(58, 141, 255, 0.3);
+        }
+
+        .quick-amount-btn.active {
+            background: linear-gradient(135deg, var(--royal-blue), var(--purple));
+            border-color: var(--royal-blue);
+            box-shadow: 0 5px 20px rgba(58, 141, 255, 0.5);
+        }
+
+        /* Info box */
+        .info-box {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(58, 141, 255, 0.1));
+            border-left: 4px solid var(--emerald);
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+        }
+
+        /* Transaction progress */
+        .progress-bar {
+            height: 8px;
+            background: rgba(58, 141, 255, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--royal-blue), var(--purple), var(--soft-gold));
+            border-radius: 10px;
+            transition: width 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: shine 1.5s ease-in-out infinite;
+        }
+
+        @keyframes shine {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* Token display */
+        .token-display {
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1;
+            animation: count-up 0.5s ease;
+        }
+
+        @keyframes count-up {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Back button */
+        .back-button {
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            color: var(--soft-gold);
+            transform: translateX(-5px);
+        }
+
+        /* Particle effect */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            animation: float-particle 10s infinite;
+        }
+
+        @keyframes float-particle {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100px) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Wallet icon animation */
+        .wallet-icon {
+            animation: wallet-bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes wallet-bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Stats card */
+        .stats-card {
+            background: rgba(58, 141, 255, 0.05);
+            border: 1px solid rgba(58, 141, 255, 0.2);
+            border-radius: 1rem;
+            padding: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .stats-card:hover {
+            background: rgba(58, 141, 255, 0.1);
+            border-color: var(--royal-blue);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="bg-orb bg-orb-1"></div>
+        <div class="bg-orb bg-orb-2"></div>
+        <div class="bg-orb bg-orb-3"></div>
+    </div>
+
+    <!-- Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Main Container -->
+    <div class="relative z-10 flex items-center justify-center min-h-screen p-4 py-12">
+        <div class="w-full max-w-2xl">
+            <!-- Back Button -->
+            <a href="index.html"
+                class="back-button inline-flex items-center gap-3 text-text-secondary hover:text-soft-gold mb-8 group">
+                <svg class="w-6 h-6 transition-transform group-hover:-translate-x-2" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                <span class="text-lg font-semibold">Back to Home</span>
+            </a>
+
+            <!-- Main Card -->
+            <div class="glass-card rounded-3xl p-8 md:p-12 space-y-8">
+                <!-- Header -->
+                <div class="text-center space-y-4">
+                    <div class="inline-block mb-4">
+                        <span class="feature-badge">🪙 Token Sale Live</span>
+                    </div>
+                    <h1 class="text-5xl md:text-6xl font-black gradient-text clash-display">
+                        Buy ADR Tokens
+                    </h1>
+                    <p class="text-xl text-text-secondary max-w-md mx-auto">
+                        Join the revolution in humanitarian aid with blockchain transparency
+                    </p>
+                </div>
+
+                <!-- Stats Grid -->
+                <img src="logo.png" alt="Aidora" class="header-logo">
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="stats-card text-center">
+                        <div class="text-2xl font-black gradient-text">1:100</div>
+                        <div class="text-xs text-text-secondary mt-1">Exchange Rate</div>
+                    </div>
+                    <div class="stats-card text-center">
+                        <div class="text-2xl font-black gradient-text">24/7</div>
+                        <div class="text-xs text-text-secondary mt-1">Available</div>
+                    </div>
+                    <div class="stats-card text-center">
+                        <div class="text-2xl font-black gradient-text">Instant</div>
+                        <div class="text-xs text-text-secondary mt-1">Transfer</div>
+                    </div>
+                </div>
+
+                <!-- Divider -->
+                <div class="divider"></div>
+
+                <!-- Wallet Connection -->
+                <div class="wallet-card rounded-2xl p-6 space-y-4">
+                    <div class="flex items-center gap-4 mb-4">
+                        <svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="walletGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#3A8DFF;stop-opacity:1" />
+                                    <stop offset="50%" style="stop-color:#A855F7;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#D4AF37;stop-opacity:1" />
+                                </linearGradient>
+                                <filter id="glow">
+                                    <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+                                    <feMerge>
+                                        <feMergeNode in="coloredBlur" />
+                                        <feMergeNode in="SourceGraphic" />
+                                    </feMerge>
+                                </filter>
+                            </defs>
+
+                            <!-- Wallet body -->
+                            <rect x="10" y="40" width="100" height="70" rx="12" fill="url(#walletGrad)"
+                                filter="url(#glow)" />
+
+                            <!-- Wallet flap -->
+                            <rect x="10" y="35" width="100" height="10" rx="5" fill="url(#walletGrad)" opacity="0.7" />
+
+                            <!-- Wallet clasp -->
+                            <circle cx="90" cy="75" r="12" fill="#0A1A2F" />
+                            <circle cx="90" cy="75" r="6" fill="#FFD700" />
+
+                            <!-- Card slot -->
+                            <rect x="20" y="55" width="50" height="8" rx="2" fill="#0A1A2F" opacity="0.3" />
+                        </svg>
+                        <div class="flex-1">
+                            <h2 class="text-2xl font-bold text-text-primary clash-display">Connect Wallet</h2>
+                            <p class="text-sm text-text-secondary">Secure connection via Rabby</p>
+                        </div>
+                    </div>
+
+                    <button id="connectWalletBtn"
+                        class="cta-button w-full text-white font-bold py-5 px-8 rounded-2xl text-lg montserrat">
+                        <span id="connectBtnText">Connect Wallet</span>
+                    </button>
+
+                    <div id="walletInfo" class="hidden">
+                        <div class="bg-emerald/10 border-2 border-emerald/30 rounded-xl p-4">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="w-3 h-3 bg-emerald rounded-full animate-pulse"></div>
+                                <span class="text-sm font-semibold text-emerald">Connected</span>
+                            </div>
+                            <p id="walletAddress" class="text-sm text-text-secondary font-mono break-all"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Divider -->
+                <div class="divider"></div>
+
+                <!-- Purchase Section -->
+                <div class="space-y-6">
+                    <h2 class="text-3xl font-bold text-text-primary clash-display">Purchase Tokens</h2>
+
+                    <!-- Info Box -->
+                    <div class="info-box">
+                        <div class="flex items-start gap-3">
+                            <div class="text-2xl">ℹ️</div>
+                            <div>
+                                <p class="text-sm text-text-primary font-semibold mb-1">Exchange Rate</p>
+                                <p class="text-xs text-text-secondary">1 ETH = 100 ADR Tokens • Instant transfer • Zero
+                                    fees</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Amount Buttons -->
+                    <div>
+                        <label class="block text-sm font-semibold text-text-secondary mb-3 montserrat">QUICK
+                            SELECT</label>
+                        <div class="grid grid-cols-4 gap-3">
+                            <button class="quick-amount-btn py-3 rounded-xl font-bold transition-all" data-amount="1">
+                                <div class="text-lg">1 ETH</div>
+                                <div class="text-xs text-text-secondary">100 ADR</div>
+                            </button>
+                            <button class="quick-amount-btn py-3 rounded-xl font-bold transition-all" data-amount="5">
+                                <div class="text-lg">5 ETH</div>
+                                <div class="text-xs text-text-secondary">500 ADR</div>
+                            </button>
+                            <button class="quick-amount-btn py-3 rounded-xl font-bold transition-all" data-amount="10">
+                                <div class="text-lg">10 ETH</div>
+                                <div class="text-xs text-text-secondary">1K ADR</div>
+                            </button>
+                            <button class="quick-amount-btn py-3 rounded-xl font-bold transition-all" data-amount="50">
+                                <div class="text-lg">50 ETH</div>
+                                <div class="text-xs text-text-secondary">5K ADR</div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Amount Input -->
+                    <div class="space-y-3">
+                        <label for="ethAmount" class="block text-sm font-semibold text-text-secondary montserrat">
+                            ETH AMOUNT
+                        </label>
+                        <input type="number" id="ethAmount" min="0.1" step="0.1" value="1" placeholder="0.0"
+                            class="input-glow w-full text-white text-3xl font-black py-6 px-8 rounded-2xl transition-all montserrat">
+                    </div>
+
+                    <!-- Token Display -->
+                    <div
+                        class="bg-gradient-to-br from-royal-blue/10 to-purple/10 rounded-2xl p-8 border-2 border-royal-blue/30">
+                        <div class="text-center">
+                            <p class="text-sm font-semibold text-text-secondary mb-3 montserrat">YOU WILL RECEIVE</p>
+                            <div class="token-display gradient-text clash-display" id="tokenAmount">100</div>
+                            <p class="text-lg font-bold text-text-secondary mt-2">ADR TOKENS</p>
+                        </div>
+                    </div>
+
+                    <!-- Buy Button -->
+                    <button id="buyTokenBtn" disabled
+                        class="cta-button w-full text-white font-black py-6 px-8 rounded-2xl text-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed montserrat">
+                        <span id="buyBtnText">🔒 Connect Wallet to Buy</span>
+                    </button>
+
+                    <!-- Transaction Progress (Hidden by default) -->
+                    <div id="transactionProgress" class="hidden space-y-3">
+                        <div class="flex justify-between text-sm font-semibold">
+                            <span class="text-text-secondary">Transaction Progress</span>
+                            <span class="text-royal-blue" id="progressText">Confirming...</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Status Message -->
+                    <div id="statusMessage" class="text-center text-base font-semibold min-h-[24px]"></div>
+                </div>
+
+                <!-- Security Info -->
+                <div class="border-t border-royal-blue/20 pt-6">
+                    <div class="flex items-center justify-center gap-8 text-sm text-text-secondary">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-emerald" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <span>Secure Transaction</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-emerald" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <span>Verified Smart Contract</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-emerald" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <span>Encrypted</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Info Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                <div class="glass-card rounded-2xl p-6">
+                    <div class="text-4xl mb-4">💡</div>
+                    <h3 class="text-xl font-bold text-text-primary mb-2 clash-display">Why Buy ADR?</h3>
+                    <ul class="space-y-2 text-sm text-text-secondary">
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald mt-1">✓</span>
+                            <span>Support transparent humanitarian aid</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald mt-1">✓</span>
+                            <span>Earn staking rewards up to 12% APY</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald mt-1">✓</span>
+                            <span>Participate in DAO governance</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald mt-1">✓</span>
+                            <span>Limited supply with deflationary model</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="glass-card rounded-2xl p-6">
+                    <div class="text-4xl mb-4">🔒</div>
+                    <h3 class="text-xl font-bold text-text-primary mb-2 clash-display">Safe & Secure</h3>
+                    <ul class="space-y-2 text-sm text-text-secondary">
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald mt-1">✓</span>
+                            <span>Audited smart contracts</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald mt-1">✓</span>
+                            <span>Non-custodial wallet connection</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald mt-1">✓</span>
+                            <span>Instant blockchain confirmation</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald mt-1">✓</span>
+                            <span>Full transaction transparency</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.15.0/ethers.umd.min.js"
+        integrity="sha512-UXYETj+vXKSURF1UlgVRLzWRS9ZiQTv3lcL4rbeLyqTXCPNZC6PTLF/Ik3uxm2Zo+E109cUpJPZfLxJsCgKSng=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        // Particle generation
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+
+                const size = Math.random() * 4 + 2;
+                const startX = Math.random() * window.innerWidth;
+                const duration = Math.random() * 8 + 8;
+                const delay = Math.random() * 5;
+
+                const colors = ['#3A8DFF', '#D4AF37', '#A855F7', '#10B981'];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${startX}px`;
+                particle.style.background = color;
+                particle.style.animationDuration = `${duration}s`;
+                particle.style.animationDelay = `${delay}s`;
+
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        createParticles();
+
+        // Token calculation
+        const ethInput = document.getElementById('ethAmount');
+        const tokenDisplay = document.getElementById('tokenAmount');
+        const exchangeRate = 100; // 1 ETH = 100 ADR
+
+        function updateTokenAmount() {
+            const ethAmount = parseFloat(ethInput.value) || 0;
+            const tokens = ethAmount * exchangeRate;
+            tokenDisplay.textContent = tokens.toLocaleString();
+        }
+
+        ethInput.addEventListener('input', updateTokenAmount);
+
+        // Quick amount buttons
+        const quickAmountBtns = document.querySelectorAll('.quick-amount-btn');
+        quickAmountBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const amount = btn.getAttribute('data-amount');
+                ethInput.value = amount;
+                updateTokenAmount();
+
+                // Update active state
+                quickAmountBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        // Wallet connection
+        let provider;
+        let signer;
+        let userAddress;
+
+        const connectWalletBtn = document.getElementById('connectWalletBtn');
+        const connectBtnText = document.getElementById('connectBtnText');
+        const walletInfo = document.getElementById('walletInfo');
+        const walletAddress = document.getElementById('walletAddress');
+        const buyTokenBtn = document.getElementById('buyTokenBtn');
+        const buyBtnText = document.getElementById('buyBtnText');
+        const statusMessage = document.getElementById('statusMessage');
+
+        connectWalletBtn.addEventListener('click', async () => {
+            if (typeof window.ethereum !== 'undefined') {
+                try {
+                    connectBtnText.innerHTML = 'Connecting... <span class="spinner"></span>';
+                    connectWalletBtn.disabled = true;
+
+                    const accounts = await window.ethereum.request({
+                        method: 'eth_requestAccounts'
+                    });
+
+                    provider = new ethers.BrowserProvider(window.ethereum);
+                    signer = await provider.getSigner();
+                    userAddress = accounts[0];
+
+                    // Display wallet info
+                    const shortAddress = `${userAddress.slice(0, 6)}...${userAddress.slice(-4)}`;
+                    walletAddress.textContent = userAddress;
+
+                    walletInfo.classList.remove('hidden');
+                    connectBtnText.textContent = '✅ Connected';
+
+                    // Enable buy button
+                    buyTokenBtn.disabled = false;
+                    buyBtnText.textContent = '🚀 Buy Tokens Now';
+
+                    showStatus('Wallet connected successfully!', 'success');
+
+                    setTimeout(() => {
+                        connectWalletBtn.disabled = false;
+                    }, 2000);
+
+                } catch (error) {
+                    console.error('Connection error:', error);
+                    connectBtnText.textContent = '🔌 Connect Wallet';
+                    connectWalletBtn.disabled = false;
+                    showStatus('Failed to connect wallet. Please try again.', 'error');
+                }
+            } else {
+                showStatus('Rabby wallet is not installed. Please install it to continue.', 'error');
+            }
+        });
+
+        // Buy tokens
+        buyTokenBtn.addEventListener('click', async () => {
+            const ethAmount = parseFloat(ethInput.value);
+
+            if (!ethAmount || ethAmount <= 0) {
+                showStatus('Please enter a valid amount', 'error');
+                return;
+            }
+
+            if (!userAddress) {
+                showStatus('Please connect your wallet first', 'error');
+                return;
+            }
+
+            try {
+                buyBtnText.innerHTML = 'Processing... <span class="spinner"></span>';
+                buyTokenBtn.disabled = true;
+
+                showProgress(0, 'Preparing transaction...');
+
+                // Simulate transaction (replace with actual smart contract call)
+                showProgress(30, 'Awaiting confirmation...');
+
+                // This is where you would call your smart contract
+                // const tx = await contract.buyTokens({ value: ethers.parseEther(ethAmount.toString()) });
+
+                showProgress(60, 'Processing on blockchain...');
+
+                // Simulate blockchain confirmation
+                await new Promise(resolve => setTimeout(resolve, 2000));
+
+                showProgress(100, 'Transaction complete!');
+
+                const tokens = ethAmount * exchangeRate;
+                showStatus(`✅ Success! You received ${tokens} ADR tokens`, 'success');
+
+                setTimeout(() => {
+                    hideProgress();
+                    buyBtnText.textContent = '🚀 Buy More Tokens';
+                    buyTokenBtn.disabled = false;
+                }, 3000);
+
+            } catch (error) {
+                console.error('Transaction error:', error);
+                hideProgress();
+                buyBtnText.textContent = '🚀 Buy Tokens Now';
+                buyTokenBtn.disabled = false;
+                showStatus('Transaction failed. Please try again.', 'error');
+            }
+        });
+
+        // Status message helper
+        function showStatus(message, type) {
+            statusMessage.textContent = message;
+            statusMessage.className = `text-center text-base font-semibold status-${type}`;
+
+            if (type !== 'info') {
+                setTimeout(() => {
+                    statusMessage.textContent = '';
+                }, 5000);
+            }
+        }
+
+        // Progress bar helpers
+        const transactionProgress = document.getElementById('transactionProgress');
+        const progressFill = document.getElementById('progressFill');
+        const progressText = document.getElementById('progressText');
+
+        function showProgress(percent, text) {
+            transactionProgress.classList.remove('hidden');
+            progressFill.style.width = `${percent}%`;
+            progressText.textContent = text;
+        }
+
+        function hideProgress() {
+            setTimeout(() => {
+                transactionProgress.classList.add('hidden');
+                progressFill.style.width = '0%';
+            }, 1000);
+        }
+
+        // Account change listener
+        if (typeof window.ethereum !== 'undefined') {
+            window.ethereum.on('accountsChanged', (accounts) => {
+                if (accounts.length === 0) {
+                    // User disconnected wallet
+                    walletInfo.classList.add('hidden');
+                    connectBtnText.textContent = 'Connect Wallet';
+                    buyTokenBtn.disabled = true;
+                    buyBtnText.textContent = '🔒 Connect Wallet to Buy';
+                    userAddress = null;
+                    showStatus('Wallet disconnected', 'info');
+                } else {
+                    // User switched account
+                    userAddress = accounts[0];
+                    walletAddress.textContent = userAddress;
+                    showStatus('Account switched successfully', 'success');
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
